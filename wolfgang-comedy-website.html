@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wolfgang Gohlke | Comedian</title>
+    <meta name="description" content="Cynical absurdism. Dark specificity. Self-aware vulnerability. Wolfgang Gohlke is a comedian from Wilmington, NC exploring identity, mental health, and the absurdity of trying to optimize your life while your life is falling apart.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --charcoal: #1a1a1a;
+            --charcoal-light: #2C2C2C;
+            --gold: #D4AF37;
+            --gold-dim: #a8892c;
+            --white: #FFFFFF;
+            --gray: #999999;
+            --text: #e5e5e5;
+            --bg-gradient: linear-gradient(135deg, #0d0d0d 0%, #1a1a1a 50%, #0f0f0f 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--charcoal);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 0.05em;
+            line-height: 1.1;
+        }
+
+        .serif {
+            font-family: 'Crimson Pro', serif;
+            font-style: italic;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1.5rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(to bottom, rgba(26,26,26,0.95) 0%, rgba(26,26,26,0) 100%);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(26,26,26,0.98);
+            backdrop-filter: blur(10px);
+            padding: 1rem 3rem;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.2em;
+            color: var(--white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-accent {
+            color: var(--gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 8rem 2rem 4rem;
+            background: var(--bg-gradient);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, var(--charcoal) 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+        }
+
+        .hero-tagline {
+            font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.2s;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 7rem);
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.4s;
+        }
+
+        .hero-subtitle {
+            font-family: 'Crimson Pro', serif;
+            font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+            font-style: italic;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.5s;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.6s;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+            animation-delay: 0.8s;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2.5rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--charcoal);
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--gray);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 1.5s;
+        }
+
+        .scroll-indicator span {
+            font-size: 0.7rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--gray);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2s ease infinite;
+        }
+
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 0.3; transform: scaleY(0.8); }
+            50% { opacity: 1; transform: scaleY(1); }
+        }
+
+        /* Section Styles */
+        section {
+            padding: 8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            letter-spacing: 0.4em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            color: var(--white);
+        }
+
+        /* Social Proof / Testimonials */
+        .testimonials {
+            background: var(--charcoal-light);
+            padding: 6rem 2rem;
+        }
+
+        .testimonials-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: var(--charcoal);
+            padding: 2.5rem;
+            border-left: 2px solid var(--gold);
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            font-family: 'Crimson Pro', serif;
+            font-size: 4rem;
+            color: var(--gold);
+            opacity: 0.3;
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            line-height: 1;
+        }
+
+        .testimonial p {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.15rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--text);
+        }
+
+        .testimonial-author {
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 0.1em;
+        }
+
+        /* Featured Video */
+        .featured-video {
+            text-align: center;
+        }
+
+        .video-container {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            aspect-ratio: 16/9;
+            background: var(--charcoal-light);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            overflow: hidden;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        }
+
+        .play-btn {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            background: var(--gold);
+            transform: scale(1.1);
+        }
+
+        .play-btn:hover svg {
+            fill: var(--charcoal);
+        }
+
+        .play-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--gold);
+            margin-left: 4px;
+        }
+
+        /* About Section */
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image-frame {
+            aspect-ratio: 3/4;
+            background: linear-gradient(135deg, var(--charcoal-light) 0%, #0d0d0d 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-image-frame::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, var(--gold), transparent);
+            opacity: 0.1;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+
+        .image-placeholder {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.3em;
+            color: var(--gray);
+            z-index: 1;
+        }
+
+        .about-accent {
+            position: absolute;
+            top: -2rem;
+            right: -2rem;
+            width: 150px;
+            height: 150px;
+            border: 1px solid var(--gold);
+            opacity: 0.5;
+        }
+
+        .about-content h2 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: var(--white);
+            margin-bottom: 2rem;
+        }
+
+        .about-content h2 span {
+            color: var(--gold);
+        }
+
+        .about-intro {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.3rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .about-text {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .about-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 2rem;
+        }
+
+        .tag {
+            padding: 0.5rem 1rem;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        /* Material Section */
+        .material-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: var(--charcoal-light);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .video-card-thumbnail {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .video-card-thumbnail::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(212, 175, 55, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-card:hover .video-card-thumbnail::after {
+            opacity: 1;
+        }
+
+        .video-card-thumbnail .play-btn {
+            width: 60px;
+            height: 60px;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover .video-card-thumbnail .play-btn {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .video-card-content {
+            padding: 1.5rem;
+        }
+
+        .video-card-duration {
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .video-card h3 {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 0.75rem;
+        }
+
+        .video-card p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Tour Dates */
+        .tour-intro {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .tour-intro p {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--gray);
+        }
+
+        .tour-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tour-item {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            gap: 2rem;
+            align-items: center;
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .tour-item:hover {
+            background: rgba(212, 175, 55, 0.05);
+            padding-left: 1rem;
+            padding-right: 1rem;
+            margin-left: -1rem;
+            margin-right: -1rem;
+        }
+
+        .tour-date {
+            text-align: center;
+        }
+
+        .tour-date-month {
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .tour-date-day {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            color: var(--white);
+            line-height: 1;
+        }
+
+        .tour-date-year {
+            font-size: 0.75rem;
+            color: var(--gray);
+        }
+
+        .tour-info h3 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .tour-info p {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .tour-empty {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+        }
+
+        .tour-empty h3 {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .tour-empty p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        /* Booking Section */
+        .booking {
+            background: var(--charcoal-light);
+            padding: 8rem 2rem;
+        }
+
+        .booking-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+        }
+
+        .booking-info h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-info > p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .booking-details {
+            margin-bottom: 2rem;
+        }
+
+        .booking-detail {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .booking-detail-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .booking-detail-icon svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--gold);
+        }
+
+        .booking-detail h4 {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .booking-detail p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .booking-form {
+            background: var(--charcoal);
+            padding: 3rem;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--white);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.05);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999999' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+        }
+
+        .form-submit {
+            margin-top: 2rem;
+        }
+
+        .form-submit .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Email Signup */
+        .email-signup {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 4rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .email-signup h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            color: var(--white);
+            margin-bottom: 1rem;
+        }
+
+        .email-signup > p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        .email-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .email-form input {
+            flex: 1;
+            padding: 1rem;
+            background: var(--charcoal);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--white);
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .email-form input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            background: #0d0d0d;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-brand h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 0.2em;
+            color: var(--white);
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-brand p {
+            font-family: 'Crimson Pro', serif;
+            font-style: italic;
+            color: var(--gray);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 44px;
+            height: 44px;
+            border: 1px solid rgba(255,255,255,0.2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            border-color: var(--gold);
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .social-link svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--gray);
+            transition: fill 0.3s ease;
+        }
+
+        .social-link:hover svg {
+            fill: var(--gold);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            color: var(--gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 1024px) {
+            .about {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .about-image {
+                max-width: 400px;
+                margin: 0 auto;
+            }
+
+            .booking-inner {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 1.5rem;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26,26,26,0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: flex;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
+
+            section {
+                padding: 5rem 1.5rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .email-form {
+                flex-direction: column;
+            }
+
+            .tour-item {
+                grid-template-columns: 80px 1fr;
+                gap: 1rem;
+            }
+
+            .tour-item .btn {
+                grid-column: 1 / -1;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .booking-form {
+                padding: 2rem 1.5rem;
+            }
+
+            .email-signup {
+                padding: 2rem 1.5rem;
+            }
+
+            .footer-top {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#home" class="logo">WOLFGANG<span class="logo-accent">.</span></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#about">About</a></li>
+            <li><a href="#material">Material</a></li>
+            <li><a href="#tour">Tour</a></li>
+            <li><a href="#booking">Book</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-tagline">Stand-Up Comedy</p>
+            <h1>WOLFGANG GOHLKE</h1>
+            <p class="hero-subtitle">"Yeah... Wolfgang it's german <span class="serif">(pause)</span> thank you <span class="serif">(pause)</span>"</p>
+            <p class="hero-description">Cynical absurdism. Dark specificity. Self-aware vulnerability.</p>
+            <div class="hero-cta">
+                <a href="#booking" class="btn btn-primary">Book Wolfgang</a>
+                <a href="#material" class="btn btn-secondary">Watch Material</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <div class="testimonials">
+        <div class="testimonials-inner">
+            <div class="section-header">
+                <p class="section-label">What People Are Saying</p>
+                <h2 class="section-title">THE REVIEWS</h2>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial animate-on-scroll">
+                    <p>Wolfgang is hilarious and professional. His timing is impeccable and his material is refreshingly original.</p>
+                    <span class="testimonial-author">— Comedy Club Booker</span>
+                </div>
+                <div class="testimonial animate-on-scroll">
+                    <p>His material is sharp, specific, and brutally honest. You can tell every word has been crafted with intention.</p>
+                    <span class="testimonial-author">— Audience Member</span>
+                </div>
+                <div class="testimonial animate-on-scroll">
+                    <p>One of the most unique voices I've seen come through the Wilmington comedy scene. A true original.</p>
+                    <span class="testimonial-author">— Fellow Comedian</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Video -->
+    <section class="featured-video">
+        <div class="section-header animate-on-scroll">
+            <p class="section-label">Featured Clip</p>
+            <h2 class="section-title">WATCH WOLFGANG</h2>
+        </div>
+        <div class="video-container animate-on-scroll">
+            <div class="video-placeholder">
+                <div class="play-btn">
+                    <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </div>
+                <p style="color: var(--gray); font-size: 0.85rem;">Embed your best 60-second clip here</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="about">
+            <div class="about-image animate-on-scroll">
+                <div class="about-image-frame">
+                    <img src="Wolfgang_Headshot.jpg" alt="Wolfgang Gohlke - Comedian" style="width: 100%; height: 100%; object-fit: cover; object-position: center top;">
+                </div>
+                <div class="about-accent"></div>
+            </div>
+            <div class="about-content animate-on-scroll">
+                <h2>THE <span>STORY</span></h2>
+                <p class="about-intro">My name is Wolfgang. My dad is German. My mom is Freddy Mercury. I have Borderline Personality Disorder, which means I wake up at 4:40 AM to go to the gym—not 4:45, because if I change my routine by five minutes, I'm convinced my entire life will collapse.</p>
+                <p class="about-text">I used to be a financial planner. I made negative $3,000. Most of my clients were women I met on dating apps. I dated a Christian nationalist MAGA conservative who asked me to impersonate Trump during sex. I did. She loved it like never before.</p>
+                <p class="about-text">I'm moving from Wilmington, NC to Austin, TX to pursue comedy full-time because I've realized the only thing I'm actually good at is admitting how absurd everything is—including myself.</p>
+                <p class="about-text">My comedy is about contradiction, vulnerability, and dark specificity. It's not about being the funniest person in the room. It's about being the most honest person in the room while pointing out life's absurdities.</p>
+                <div class="about-tags">
+                    <span class="tag">Dark Humor</span>
+                    <span class="tag">Mental Health</span>
+                    <span class="tag">Dating Disasters</span>
+                    <span class="tag">Identity</span>
+                    <span class="tag">Absurdism</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Material Section -->
+    <section id="material">
+        <div class="section-header animate-on-scroll">
+            <p class="section-label">Comedy Clips</p>
+            <h2 class="section-title">BEST MATERIAL</h2>
+        </div>
+        
+        <!-- Featured 5-Minute Clip -->
+        <div class="featured-video animate-on-scroll" style="max-width: 900px; margin: 0 auto 4rem;">
+            <div style="padding:56.25% 0 0 0; position:relative;">
+                <iframe src="https://player.vimeo.com/video/1118768148?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                    frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+                    title="Wolfgang Gohlke - 5 Minute Set"></iframe>
+            </div>
+            <div style="text-align: center; margin-top: 1.5rem;">
+                <span style="font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: #D4AF37;">5 Minutes</span>
+                <h3 style="font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; color: #fff; margin: 0.5rem 0;">Featured Set</h3>
+                <p style="color: #999; font-size: 0.9rem;">Five minutes of Wolfgang's best material—German discipline, Freddy Mercury flamboyance, and dark specificity.</p>
+            </div>
+        </div>
+
+        <div class="material-grid">
+            <div class="video-card animate-on-scroll">
+                <div class="video-card-thumbnail" style="padding:0;">
+                    <div style="padding:56.25% 0 0 0; position:relative; width:100%;">
+                        <iframe src="https://player.vimeo.com/video/1148092974?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+                            title="My Great Uncle Was a Nazi"></iframe>
+                    </div>
+                </div>
+                <div class="video-card-content">
+                    <span class="video-card-duration">60 Seconds</span>
+                    <h3>My Great Uncle Was a Nazi</h3>
+                    <p>Wolfgang's German heritage gets dark fast. Some families have skeletons in the closet. His had a uniform.</p>
+                </div>
+            </div>
+            <div class="video-card animate-on-scroll">
+                <div class="video-card-thumbnail" style="padding:0;">
+                    <div style="padding:56.25% 0 0 0; position:relative; width:100%;">
+                        <iframe src="https://player.vimeo.com/video/1148085846?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+                            title="Yeah... Wolfgang it's german"></iframe>
+                    </div>
+                </div>
+                <div class="video-card-content">
+                    <span class="video-card-duration">90 Seconds</span>
+                    <h3>Yeah... Wolfgang it's german</h3>
+                    <p>The opening bit that sets up Wolfgang's entire comedic identity. German discipline meets Freddy Mercury flamboyance.</p>
+                </div>
+            </div>
+            <div class="video-card animate-on-scroll">
+                <div class="video-card-thumbnail">
+                    <div class="play-btn">
+                        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                </div>
+                <div class="video-card-content">
+                    <span class="video-card-duration">2 Minutes</span>
+                    <h3>Wolf Path to Anxiety</h3>
+                    <p>Wolfgang means Wolf Path. Wolves are disciplined. Wolfgang wakes up at 4:40 AM because of Borderline Personality Disorder.</p>
+                </div>
+            </div>
+            <div class="video-card animate-on-scroll">
+                <div class="video-card-thumbnail" style="padding:0;">
+                    <div style="padding:56.25% 0 0 0; position:relative; width:100%;">
+                        <iframe src="https://player.vimeo.com/video/1148088575?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" 
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" 
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;" 
+                            title="Trump Roleplay"></iframe>
+                    </div>
+                </div>
+                <div class="video-card-content">
+                    <span class="video-card-duration">2 Minutes</span>
+                    <h3>Trump Roleplay</h3>
+                    <p>She asked Wolfgang to impersonate Trump during sex. He did. She loved it like never before.</p>
+                </div>
+            </div>
+            <div class="video-card animate-on-scroll">
+                <div class="video-card-thumbnail">
+                    <div class="play-btn">
+                        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                </div>
+                <div class="video-card-content">
+                    <span class="video-card-duration">2 Minutes</span>
+                    <h3>Negative $3,000 Financial Planner</h3>
+                    <p>Wolfgang was a financial planner who made negative $3,000. Most of his clients were women he met on dating apps.</p>
+                </div>
+            </div>
+            <div class="video-card animate-on-scroll">
+                <div class="video-card-thumbnail">
+                    <div class="play-btn">
+                        <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    </div>
+                </div>
+                <div class="video-card-content">
+                    <span class="video-card-duration">90 Seconds</span>
+                    <h3>People Think I'm Named After Mozart</h3>
+                    <p>People always ask if Wolfgang is named after Mozart. Wolfgang wishes. That would mean his dad had culture.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tour Dates -->
+    <section id="tour">
+        <div class="section-header animate-on-scroll">
+            <p class="section-label">Upcoming Shows</p>
+            <h2 class="section-title">TOUR DATES</h2>
+        </div>
+        <div class="tour-intro animate-on-scroll">
+            <p>Wolfgang is coming to a city near you (probably). Check out upcoming shows and get tickets.</p>
+        </div>
+        <div class="tour-list">
+            <div class="tour-item animate-on-scroll">
+                <div class="tour-date">
+                    <span class="tour-date-month">DEC</span>
+                    <span class="tour-date-day">26</span>
+                    <span class="tour-date-year">2024</span>
+                </div>
+                <div class="tour-info">
+                    <h3>The Brown Pelican</h3>
+                    <p>New Bern, NC • 7pm</p>
+                </div>
+                <a href="#contact" class="btn btn-secondary">Info</a>
+            </div>
+            <div class="tour-item animate-on-scroll">
+                <div class="tour-date">
+                    <span class="tour-date-month">JAN</span>
+                    <span class="tour-date-day">01</span>
+                    <span class="tour-date-year">2025</span>
+                </div>
+                <div class="tour-info">
+                    <h3>Waterline Brewing Company</h3>
+                    <p>Wilmington, NC • 1pm • Roast of 2025</p>
+                </div>
+                <a href="#contact" class="btn btn-secondary">Info</a>
+            </div>
+            <div class="tour-item animate-on-scroll">
+                <div class="tour-date">
+                    <span class="tour-date-month">JAN</span>
+                    <span class="tour-date-day">17</span>
+                    <span class="tour-date-year">2025</span>
+                </div>
+                <div class="tour-info">
+                    <h3>The BERN</h3>
+                    <p>New Bern, NC • 7pm</p>
+                </div>
+                <a href="#contact" class="btn btn-secondary">Info</a>
+            </div>
+            <div class="tour-item animate-on-scroll">
+                <div class="tour-date">
+                    <span class="tour-date-month">JAN</span>
+                    <span class="tour-date-day">23</span>
+                    <span class="tour-date-year">2025</span>
+                </div>
+                <div class="tour-info">
+                    <h3>The Brown Pelican</h3>
+                    <p>New Bern, NC • 7pm • Bill Lake Headlines</p>
+                </div>
+                <a href="#contact" class="btn btn-secondary">Info</a>
+            </div>
+            <div class="tour-item animate-on-scroll">
+                <div class="tour-date">
+                    <span class="tour-date-month">FEB</span>
+                    <span class="tour-date-day">13</span>
+                    <span class="tour-date-year">2025</span>
+                </div>
+                <div class="tour-info">
+                    <h3>Harnett County Lions Club</h3>
+                    <p>Sanford, NC • Carolina Lakes Golf Course • TBD</p>
+                </div>
+                <a href="#contact" class="btn btn-secondary">Info</a>
+            </div>
+            <div class="tour-item animate-on-scroll">
+                <div class="tour-date">
+                    <span class="tour-date-month">FEB</span>
+                    <span class="tour-date-day">27</span>
+                    <span class="tour-date-year">2025</span>
+                </div>
+                <div class="tour-info">
+                    <h3>Station No. 2</h3>
+                    <p>Wilmington, NC • 7pm</p>
+                </div>
+                <a href="#contact" class="btn btn-secondary">Info</a>
+            </div>
+            <div class="tour-item animate-on-scroll">
+                <div class="tour-date">
+                    <span class="tour-date-month">FEB</span>
+                    <span class="tour-date-day">28</span>
+                    <span class="tour-date-year">2025</span>
+                </div>
+                <div class="tour-info">
+                    <h3>Station No. 2</h3>
+                    <p>Wilmington, NC • 7pm</p>
+                </div>
+                <a href="#contact" class="btn btn-secondary">Info</a>
+            </div>
+        </div>
+
+        <!-- Email Signup -->
+        <div class="email-signup animate-on-scroll" style="margin-top: 4rem;">
+            <h3>Can't Find Wolfgang in Your City?</h3>
+            <p>Sign up to be the first to know when Wolfgang is performing near you.</p>
+            <form class="email-form" onsubmit="handleEmailSubmit(event)">
+                <input type="email" placeholder="Your email address" required>
+                <button type="submit" class="btn btn-primary">Notify Me</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <div class="booking" id="booking">
+        <div class="booking-inner">
+            <div class="booking-info animate-on-scroll">
+                <h2>BOOK WOLFGANG</h2>
+                <p>For your venue, festival, corporate event, or private party. Fill out the form, and we'll get back to you within 48 hours.</p>
+                
+                <div class="booking-details">
+                    <div class="booking-detail">
+                        <div class="booking-detail-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Available Sets</h4>
+                            <p>30-min, 45-min, or 60-min performances</p>
+                        </div>
+                    </div>
+                    <div class="booking-detail">
+                        <div class="booking-detail-icon">
+                            <svg viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Response Time</h4>
+                            <p>Within 48 hours guaranteed</p>
+                        </div>
+                    </div>
+                    <div class="booking-detail">
+                        <div class="booking-detail-icon">
+                            <svg viewBox="0 0 24 24"><path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM9 10H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm-8 4H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2z"/></svg>
+                        </div>
+                        <div>
+                            <h4>Technical Needs</h4>
+                            <p>Microphone, sound system, stage lighting</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form class="booking-form animate-on-scroll" onsubmit="handleBookingSubmit(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="venue">Venue Name *</label>
+                        <input type="text" id="venue" name="venue" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Event Date *</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="audience">Expected Audience Size *</label>
+                        <input type="text" id="audience" name="audience" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="event-type">Event Type</label>
+                        <select id="event-type" name="event-type">
+                            <option value="">Select event type</option>
+                            <option value="comedy-club">Comedy Club</option>
+                            <option value="bar">Bar</option>
+                            <option value="corporate">Corporate Event</option>
+                            <option value="festival">Festival</option>
+                            <option value="private">Private Party</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="budget">Budget Range *</label>
+                        <input type="text" id="budget" name="budget" required>
+                    </div>
+                </div>
+                <div class="form-group full">
+                    <label for="message">Additional Details</label>
+                    <textarea id="message" name="message" placeholder="Tell us about your event..."></textarea>
+                </div>
+                <div class="form-submit">
+                    <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-header animate-on-scroll">
+            <p class="section-label">Get In Touch</p>
+            <h2 class="section-title">CONTACT</h2>
+        </div>
+        <div class="email-signup animate-on-scroll">
+            <h3>Questions? Ideas? Just Want to Say Hi?</h3>
+            <p>Drop a line at <a href="/cdn-cgi/l/email-protection#b1d9d4dddddef1c6deddd7d6d0dfd6d6ded9dddad49fd2dedc" style="color: var(--gold);"><span class="__cf_email__" data-cfemail="d5bdb0b9b9ba95a2bab9b3b2b4bbb2b2babdb9beb0fbb6bab8">[email&#160;protected]</span></a></p>
+            <div class="footer-social" style="justify-content: center; margin-top: 2rem;">
+                <a href="https://instagram.com" class="social-link" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="https://tiktok.com" class="social-link" aria-label="TikTok">
+                    <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                </a>
+                <a href="https://youtube.com" class="social-link" aria-label="YouTube">
+                    <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                </a>
+                <a href="https://twitter.com" class="social-link" aria-label="Twitter/X">
+                    <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <h4>WOLFGANG<span style="color: var(--gold);">.</span></h4>
+                    <p>Cynical absurdism. Dark specificity.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://instagram.com" class="social-link" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://tiktok.com" class="social-link" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                    </a>
+                    <a href="https://youtube.com" class="social-link" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="https://twitter.com" class="social-link" aria-label="Twitter/X">
+                        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Wolfgang Gohlke. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#booking">Book Wolfgang</a>
+                    <a href="/cdn-cgi/l/email-protection#ed8588818182ad9a82818b8a8c838a8a8285818688c38e8280">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.classList.remove('active');
+            });
+        });
+
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form handlers
+        function handleEmailSubmit(e) {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            alert(`Thanks for subscribing! We'll notify you at ${email} when Wolfgang is performing near you.`);
+            e.target.reset();
+        }
+
+        function handleBookingSubmit(e) {
+            e.preventDefault();
+            alert("Thanks for reaching out! We'll get back to you within 48 hours.");
+            e.target.reset();
+        }
+
+        // Smooth scroll for Safari
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (targ
